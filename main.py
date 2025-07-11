@@ -3,6 +3,7 @@ from constants import *
 from player import Player
 from asteroid import Asteroid
 from asteroidfield import AsteroidField
+import sys
 
 
 def main():
@@ -35,6 +36,10 @@ def main():
         # limit the framerate to 144 FPS
         dt = clock.tick(144) / 1000
         updatable.update(dt)
+        for asteroid in asteroids:
+            if asteroid.detect_collision(player):
+                sys.exit("Game over!")
+
 
 
 if __name__ == "__main__":
