@@ -36,12 +36,12 @@ def main():
         updatable.update(dt)
 
         for asteroid in asteroids:
-            if asteroid.collides_with(player):
+            if asteroid.detect_collision(player):
                 print("Game over!")
                 sys.exit()
 
             for shot in shots:
-                if asteroid.collides_with(shot):
+                if asteroid.detect_collision(shot):
                     shot.kill()
                     asteroid.split()
 
@@ -52,8 +52,8 @@ def main():
 
         pygame.display.flip()
 
-        # limit the framerate to 60 FPS
-        dt = clock.tick(60) / 1000
+        # limit the framerate to 144 FPS
+        dt = clock.tick(144) / 1000
 
 
 if __name__ == "__main__":
